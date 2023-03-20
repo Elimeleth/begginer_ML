@@ -8,11 +8,11 @@ Original file is located at
 """
 
 # USAMOS LA FUNCIONALIDAD DE OFRECE COLAB DE CARGAR ARCHIVOS
-from google.colab import files
-files.upload_file('recetas.csv')
+# from google.colab import files
+# files.upload_file('recetas.csv')
 
 # INSTALAMOS LA LIBRERIA TRANSFORMERS
-!pip install transformers
+# !pip install transformers
 
 from sklearn.model_selection import train_test_split # VALIDACION Y TEST SPLITEADOS EN UN PORCENTAJE
 
@@ -24,16 +24,13 @@ recetas = pd.read_csv('/content/recetas.csv', sep='|', skip_blank_lines=True)
 ingredientes = recetas[['Ingredientes']] # DE AQUI OBTENEMOS NUESTRA VARIABLE TARGET
 ingredientes.rename({'Ingredientes':'ingredientes'}, inplace=True) # RENOMBRAMOS NUESTRA VARIABLE
 
-ingredientes.head() # VISUALIZAMOS COMO SE MUESTRA LA DATA
+# ingredientes.head() # VISUALIZAMOS COMO SE MUESTRA LA DATA
 
 data = ingredientes['Ingredientes'].astype('str').apply(lambda x: re.sub(r'[^a-zA-Z0-9]+', ' ', x)) # APLICAMOS UN LIMPIADO A NUESTRO DATASET
 
-data.head()
+# data.head()
 
 train, test = train_test_split(recetas,test_size=0.15) # TOMAMOS EL 15% DE NUESTRA DATA PARA TEST
-
-data = recetas["Ingredientes"].values
-print(data)
 
 # CON ESTA FUNCIONALIDAD PRETENDEMOS CREAR UN ARCHIVO DE TRAIN Y TEST CON VECTORES QUE INDIQUEN LOS TEXTOS TOKENIZADOS
 def build_text_files(recetas, destino):
