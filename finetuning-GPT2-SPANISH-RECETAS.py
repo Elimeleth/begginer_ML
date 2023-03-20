@@ -121,7 +121,7 @@ trainer.save_model() #GUARDAMOS EL CHECKPOINT
 from transformers import pipeline # IMPORTAMOS NUESTRA TUBERIA
 
 # GENERIACION DE TEXTO Y LE PASAMOS NUESTRO MODELO Y EL TOKENIZER QUE USAMOS
-chef = pipeline('text-generation',model='./gpt2-recetas', tokenizer='DeepESP/gpt2-spanish',config={'max_length':800})
+chef = pipeline('text-generation',model='./gpt2-recetas', tokenizer='DeepESP/gpt2-spanish')
 
 # LLAMAMOS A NUESTRO MODELO
-result = chef('hamburguesa')[0]['generated_text']
+result = chef('pasta')[0]['generated_text']
